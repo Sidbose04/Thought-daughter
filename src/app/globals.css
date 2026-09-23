@@ -1,0 +1,157 @@
+:root {
+  --ink: #111215;
+  --ink-secondary: #3b3f46;
+  --muted: #737882;
+  --mist: #dfe3ea;
+  --line: rgba(17, 18, 21, 0.12);
+  --paper: #f4f5f7;
+  --paper-soft: #eceef2;
+  --paper-card: #f9fafb;
+  --blue: #23344d;
+  --blue-soft: #304463;
+  --sand: #edebe6;
+  --gold: #b3925c;
+  --card-shadow: 0 20px 48px rgba(17, 18, 21, 0.08);
+  --card-shadow-hover: 0 28px 64px rgba(17, 18, 21, 0.16);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* Subtle background noise texture simulation */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Base typography */
+h1, h2, h3, h4, .serif-font {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.display-font {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: floatGentle 9s ease-in-out infinite 1.2s;
+}
+
+/* 3D Flip Card Styles */
+.perspective-container {
+  perspective: 1400px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}

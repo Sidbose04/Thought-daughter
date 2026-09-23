@@ -1,0 +1,221 @@
+.hero {
+  min-height: 100svh;
+  position: relative;
+  background: #91a5ba;
+  padding: 160px 9vw 65px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.heroHalo {
+  content: "";
+  position: absolute;
+  width: 75vw;
+  height: 75vw;
+  right: -20vw;
+  top: -19vw;
+  background: radial-gradient(
+    circle,
+    rgba(215, 226, 240, 0.45),
+    rgba(145, 165, 186, 0) 65%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.heroEyebrow {
+  display: none;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+  max-width: 550px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(56px, 7.2vw, 108px);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.italicWord {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.description {
+  max-width: 340px;
+  margin: 32px 0 38px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.textLink {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  padding-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.textLink:hover {
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.linkArrow {
+  font-size: 15px;
+  transition: transform 0.25s ease;
+}
+
+.textLink:hover .linkArrow {
+  transform: translateY(3px);
+}
+
+.heroProductWrapper {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+}
+
+.heroProduct {
+  position: relative;
+  width: min(39vw, 520px);
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.productImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.1;
+  object-fit: cover;
+  object-position: 43% 50%;
+  border-radius: 4px;
+  filter: saturate(0.85);
+  box-shadow: 0 34px 60px rgba(40, 50, 65, 0.24);
+}
+
+.floatCard {
+  position: absolute;
+  width: 82px;
+  height: 125px;
+  background: #edf0f2;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 16px 36px rgba(30, 42, 55, 0.18);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.miniCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardOne {
+  left: -48px;
+  top: 10%;
+  transform: rotate(-16deg);
+}
+
+.cardTwo {
+  right: -42px;
+  bottom: 5%;
+  transform: rotate(18deg);
+}
+
+.scrollNote {
+  position: absolute;
+  left: 9vw;
+  bottom: 34px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.scrollNote span {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 130px 6vw 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .heroEyebrow {
+    display: block;
+  }
+  .heroCopy {
+    max-width: 100%;
+  }
+  .title {
+    font-size: 58px;
+  }
+  .heroProductWrapper {
+    margin-top: 36px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .heroProduct {
+    width: 78vw;
+  }
+  .floatCard {
+    width: 58px;
+    height: 88px;
+  }
+  .cardOne {
+    left: -20px;
+  }
+  .cardTwo {
+    right: -20px;
+  }
+  .scrollNote {
+    position: static;
+    margin-top: 40px;
+    left: auto;
+    bottom: auto;
+  }
+}

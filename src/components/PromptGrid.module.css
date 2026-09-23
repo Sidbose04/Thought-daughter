@@ -1,0 +1,159 @@
+.questions {
+  background: #dce5ef;
+  color: var(--ink);
+  padding: 130px 9vw;
+}
+
+.headingArea {
+  max-width: 590px;
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(44px, 5.5vw, 82px);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.title em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.subtitle {
+  max-width: 380px;
+  margin: 28px 0 0;
+  color: #555d68;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.promptGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.promptCard {
+  position: relative;
+  aspect-ratio: 1.6 / 1;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  perspective: 1000px;
+  text-align: left;
+  border-radius: 6px;
+  transition: transform 0.25s ease;
+}
+
+.promptCard:hover {
+  transform: translateY(-2px);
+}
+
+.promptCard > span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  box-shadow: 0 16px 32px rgba(65, 76, 93, 0.12);
+}
+
+.cardBack {
+  background: #f7f8fa;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.cardBackBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(17, 18, 21, 0.45);
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.cardFront {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.cardFront img {
+  transform: scale(1.17);
+}
+
+.cardFrontShifted img {
+  transform: scale(1.26);
+}
+
+.promptCard.isFlipped .cardBack {
+  transform: rotateY(180deg);
+}
+
+.promptCard.isFlipped .cardFront {
+  transform: rotateY(360deg);
+  z-index: 3;
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hint {
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  margin: 30px 0 0;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .promptGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .promptGrid {
+    grid-template-columns: 1fr;
+  }
+  .questions {
+    padding: 80px 6vw;
+  }
+  .hint {
+    text-align: left;
+  }
+}
