@@ -29,8 +29,9 @@
   display: block;
   width: 100%;
   height: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
+  /* filter: invert(1) grayscale(100%) contrast(200%); */
+  /* mix-blend-mode: screen; */
+  /* background: transparent; */
 }
 
 .nav {
@@ -70,17 +71,21 @@
   .header {
     padding: 20px 6vw;
   }
+
   .wordmarkLink {
     width: 260px;
     transform: none;
   }
+
   .nav {
     gap: 16px;
   }
+
   .navLink:first-child,
   .navLink:last-child {
     display: none;
   }
+
   .navLink {
     font-size: 10px;
   }

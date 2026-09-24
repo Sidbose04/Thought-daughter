@@ -27,14 +27,14 @@ export default function Hero() {
       <div className={styles.heroProductWrapper} aria-label="Thought Daughter card deck">
         <div className={styles.heroProduct}>
           <Image
-            src="/images/deck/hero-deck.jpg"
+            src="/images/deck/Hero.png"
             alt="Thought Daughter card deck in fine linen paper"
             width={540}
             height={594}
             priority
             className={styles.productImg}
           />
-          <div className={`${styles.floatCard} ${styles.cardOne}`}>
+          {/* <div className={`${styles.floatCard} ${styles.cardOne}`}>
             <Image
               src="/images/cards/Card.png"
               alt="Thought Daughter card back"
@@ -42,8 +42,8 @@ export default function Hero() {
               height={122}
               className={styles.miniCardImg}
             />
-          </div>
-          <div className={`${styles.floatCard} ${styles.cardTwo}`}>
+          </div> */}
+          {/* <div className={`${styles.floatCard} ${styles.cardTwo}`}>
             <Image
               src="/images/cards/CARD DECK QUESTIONS 1.png"
               alt="Sample inquiry prompt"
@@ -51,7 +51,7 @@ export default function Hero() {
               height={122}
               className={styles.miniCardImg}
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

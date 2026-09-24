@@ -9,7 +9,7 @@ export default function Header() {
     <header className={styles.header}>
       <Link href="#top" className={styles.wordmarkLink} aria-label="Thought Daughter home">
         <Image
-          src="/images/headding.png"
+          src="/logo.png"
           alt="Thought Daughter"
           width={352}
           height={80}
@@ -18,15 +18,15 @@ export default function Header() {
         />
       </Link>
       <nav className={styles.nav}>
-        <a href="#ritual" className={styles.navLink}>
+        {/* <a href="#ritual" className={styles.navLink}>
           The Ritual
-        </a>
+        </a> */}
         <a href="#questions" className={styles.navLink}>
           The Questions <span className={styles.arrow}>↘</span>
         </a>
-        <a href="#about" className={styles.navLink}>
+        {/* <a href="#about" className={styles.navLink}>
           About
-        </a>
+        </a> */}
       </nav>
     </header>
   );
