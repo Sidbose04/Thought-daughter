@@ -23,13 +23,13 @@ export default function PromptGrid() {
   return (
     <section className="questions section" id="questions">
       <div className="questions-heading">
-        <p className="eyebrow">A glimpse inside</p>
+        <p className="eyebrow">Sample prompts</p>
         <h2>
-          Turn the card.
+          Turn a card.
           <br />
-          <em>See what stays.</em>
+          <em>Take your time.</em>
         </h2>
-        <p>Each question opens a door. Some lead outward; some, quietly, in.</p>
+        <p>Twelve questions from the deck. Tap any card to flip it over.</p>
       </div>
       <div className="prompt-grid" aria-label="Sample questions">
         {QUESTIONS.map((q, idx) => (

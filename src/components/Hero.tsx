@@ -10,9 +10,7 @@ export default function Hero() {
           <em>lingering</em> with.
         </h1>
         <p>
-          {/* A deck designed for slow evenings, deeper conversations, and unexpected
-          stories. */}
-          An 80-card conversation deck designed for slow evenings, deeper questions, and questions waiting to be told.
+          Eighty question cards for long dinners, quiet nights, and the conversations you never quite get around to having.
         </p>
         <a className="text-link" href="#ritual">
           Explore the ritual <span>↓</span>

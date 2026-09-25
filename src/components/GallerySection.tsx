@@ -14,7 +14,7 @@ export default function GallerySection() {
           src="/images/deck/gallery-large.jpg"
           alt="Thought Daughter deck at a small street café table"
         />
-        <figcaption>Take it somewhere the evening might surprise you.</figcaption>
+        <figcaption>Coffee in the afternoon, wine by ten. Keep a deck in your jacket pocket.</figcaption>
       </figure>
       <figure className="gallery-small reveal">
         <img

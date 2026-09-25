@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Thought Daughter — Questions worth lingering with",
+  title: "Thought Daughter · Questions worth lingering with",
   description:
-    "A deck designed for slow evenings, deeper conversations, and unexpected stories.",
+    "Eighty question cards for long dinners, quiet nights, and the conversations you never quite get around to having.",
 };
 
 export const viewport: Viewport = {

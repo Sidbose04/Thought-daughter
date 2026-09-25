@@ -9,38 +9,36 @@ export default function FeatureSections() {
           />
         </div>
         <div className="feature-copy">
-          <p className="eyebrow">Designed for company</p>
+          <p className="eyebrow">Table companion</p>
           <h2>
-            For all the ways
+            For tables where
             <br />
-            we <em>gather.</em>
+            people <em>stay.</em>
           </h2>
           <ul className="situations">
-            <li>Dinner parties</li>
-            <li>First dates</li>
-            <li>Long friendships</li>
-            <li>Solo reflection</li>
+            <li>Late dinners</li>
+            <li>Third drinks</li>
+            <li>Quiet mornings</li>
+            <li>Old friends</li>
           </ul>
         </div>
       </section>
 
       <section className="feature feature-second section">
         <div className="feature-copy">
-          <p className="eyebrow">Not another icebreaker</p>
+          <p className="eyebrow">No trivia, no scores</p>
           <h2>
-            Less performance.
+            Skip the small talk.
             <br />
-            <em>More presence.</em>
+            <em>Start in the middle.</em>
           </h2>
           <p className="intro">
-            The best stories arrive sideways. Thought Daughter makes room for
-            curiosity, the kind that lets a conversation become its own place to
-            stay.
+            Nobody needs another round of surface questions. Pick a card, read it out loud, and let the room go quiet for a second while everyone actually thinks.
           </p>
           <div className="keywords">
-            <span>Depth</span>
-            <span>Storytelling</span>
-            <span>Curiosity</span>
+            <span>80 Linen Cards</span>
+            <span>No Timer</span>
+            <span>No Right Answers</span>
           </div>
         </div>
         <div className="feature-media reveal">

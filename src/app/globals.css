@@ -213,7 +213,7 @@ h2 em {
 }
 
 .section {
-  padding: 150px 9vw
+  padding: 140px clamp(55px, 10.5vw, 170px);
 }
 
 .drift {
@@ -354,77 +354,345 @@ h2 em {
   cursor: pointer;
 }
 
-.ritual {
+/* --- Ritual & Envelope Section --- */
+.ritual-section {
+  background: #ffffff;
+  color: var(--ink);
+  padding: 120px clamp(55px, 10.5vw, 170px) 130px;
+  position: relative;
+  overflow: visible;
+}
+
+.ritual-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 11vw;
-  align-items: center
-}
-
-.ritual-image img {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(40px, 6vw, 90px);
+  align-items: flex-start;
   width: 100%;
-  display: block;
-  border-radius: 3px;
-  box-shadow: 0 20px 55px rgba(43, 47, 54, .11)
+  margin: 0;
 }
 
-.ritual-copy h2,
+.ritual-left {
+  position: relative;
+  z-index: 2;
+}
+
+.ritual-left .eyebrow {
+  margin: 0 0 28px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.ritual-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.ritual-title em {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ritual-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.ritual-tab-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8fa4b9;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-align: left;
+}
+
+.ritual-tab-btn:hover {
+  color: #252b35;
+  transform: translateX(4px);
+}
+
+.ritual-tab-btn.active {
+  color: #252b35;
+  font-weight: 600;
+}
+
+.ritual-tab-btn .tab-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8fa4b9;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ritual-tab-btn.active .tab-indicator {
+  background: #252b35;
+  transform: scale(1.4);
+}
+
+/* Right Column: Envelope Stage */
+.ritual-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal-meta {
+  margin-bottom: 24px;
+}
+
+.reveal-tag {
+  display: block;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8fa4b9;
+  margin-bottom: 6px;
+}
+
+.reveal-caption {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #7c8594;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.envelope-stage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.envelope-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 42px rgba(35, 48, 64, 0.12));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+}
+
+.envelope-stage:hover .envelope-img {
+  transform: translateY(-4px);
+}
+
+.envelope-stage.is-revealed .envelope-img {
+  filter: brightness(0.94) drop-shadow(0 24px 48px rgba(35, 48, 64, 0.16));
+}
+
+/* Floating Revealed Card */
+.revealed-card {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(60px) scale(0.96);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease;
+  z-index: 10;
+}
+
+.revealed-card.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-28%) scale(1.04);
+  filter: drop-shadow(0 28px 60px rgba(20, 30, 42, 0.28));
+}
+
+.revealed-inner {
+  background: #faf7f2;
+  border: 1px solid rgba(40, 48, 58, 0.12);
+  border-radius: 8px;
+  padding: 34px 30px;
+  box-sizing: border-box;
+  color: #28303a;
+  position: relative;
+}
+
+.revealed-inner::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(40, 48, 58, 0.07);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.card-top-tag {
+  display: block;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  color: #252b35;
+}
+
+.ritual-text-body p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  margin: 0 0 15px;
+  color: #2c343e;
+}
+
+.ritual-text-body p:last-child {
+  margin-bottom: 0;
+}
+
+.ritual-closer {
+  font-weight: 600;
+  color: #1a2028 !important;
+}
+
+/* Code Card */
+.code-card {
+  text-align: center;
+}
+
+.pegasus-logo {
+  height: 48px;
+  width: auto;
+  margin: 0 auto 14px;
+  display: block;
+  object-fit: contain;
+}
+
+.code-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+  color: #252b35;
+}
+
+.code-heading em {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 20px;
+}
+
+.code-rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.code-rules-list li {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #3b4450;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  position: relative;
+}
+
+.code-rules-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #8fa4b9;
+}
+
+.code-rules-list li strong {
+  color: #1a2028;
+  font-weight: 600;
+}
+
+.code-closing-tag {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  margin: 18px 0 14px;
+  color: #252b35;
+}
+
+.code-social {
+  font-family: Inter, sans-serif;
+  font-size: 9.5px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c8594;
+  margin: 0;
+}
+
+.code-social span {
+  color: #252b35;
+  font-weight: 600;
+}
+
+.envelope-action-hint {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8fa4b9;
+  transition: color 0.3s ease;
+}
+
+.envelope-stage:hover .envelope-action-hint {
+  color: #252b35;
+}
+
 .feature h2,
 .questions h2,
 .gallery h2 {
   font-size: clamp(48px, 6vw, 86px)
-}
-
-.intro {
-  color: #555d68;
-  max-width: 420px;
-  margin: 30px 0;
-  font-size: 15px
-}
-
-.ritual-list {
-  list-style: none;
-  margin: 42px 0 0;
-  padding: 0;
-  border-top: 1px solid var(--line)
-}
-
-.ritual-list li {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: .7s;
-  display: flex;
-  gap: 25px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  font: 400 25px 'Cormorant Garamond', serif
-}
-
-.ritual-list li.in-view {
-  opacity: 1;
-  transform: none
-}
-
-.ritual-list li:nth-child(2) {
-  transition-delay: .12s
-}
-
-.ritual-list li:nth-child(3) {
-  transition-delay: .24s
-}
-
-.ritual-list li:nth-child(4) {
-  transition-delay: .36s
-}
-
-.ritual-list li:nth-child(5) {
-  transition-delay: .48s
-}
-
-.ritual-list span {
-  font: 600 10px/2 Inter, sans-serif;
-  letter-spacing: .1em;
-  color: var(--muted)
 }
 
 .feature {
@@ -627,7 +895,7 @@ footer {
   background: var(--ink);
   color: var(--paper);
   border-top: 1px solid rgba(247, 248, 250, .22);
-  padding: 58px 9vw 30px;
+  padding: 58px clamp(55px, 10.5vw, 170px) 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px
@@ -844,7 +1112,7 @@ footer {
 /* Responsive breakpoint for mobile & tablet (<= 960px) */
 @media (max-width: 960px) {
   .site-header {
-    padding: 28px 5vw 18px;
+    padding: 28px 6vw 18px;
   }
 
   .header-logo {
@@ -859,7 +1127,7 @@ footer {
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 110px 7vw 55px;
+    padding: 110px 6vw 55px;
     gap: 40px;
     min-height: auto;
   }
@@ -901,7 +1169,7 @@ footer {
 
   .drift {
     min-height: auto;
-    padding: 60px 5vw 70px;
+    padding: 60px 6vw 70px;
   }
 
   .drift .eyebrow {
@@ -991,6 +1259,61 @@ footer {
   .drift-card-c:active .drift-card-inner {
     transform: rotate(-1.5deg) translateY(-3px);
   }
+
+  .ritual-section {
+    padding: 70px 6vw 80px;
+  }
+
+  .ritual-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ritual-title {
+    font-size: clamp(38px, 9vw, 56px);
+  }
+
+  .ritual-options {
+    margin-top: 32px;
+    gap: 12px;
+  }
+
+  .ritual-tab-btn {
+    font-size: 11.5px;
+  }
+
+  .ritual-right {
+    align-items: center;
+    width: 100%;
+  }
+
+  .reveal-meta {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .envelope-stage {
+    max-width: min(88vw, 360px);
+    margin: 0 auto;
+  }
+
+  .revealed-card.open {
+    transform: translateY(-20%) scale(1.02);
+  }
+
+  .revealed-inner {
+    padding: 24px 20px;
+  }
+
+  .ritual-text-body p {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .code-rules-list li {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
 }
 
 @media(max-width:768px) {
@@ -1015,7 +1338,6 @@ footer {
     padding: 95px 6vw
   }
 
-  .ritual,
   .feature,
   .feature-second {
     display: flex;
@@ -1101,15 +1423,21 @@ footer {
     margin: 36px 0 0
   }
 
+  footer {
+    padding: 50px 6vw 28px;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
   .footer-links {
     justify-content: flex-start;
     flex-wrap: wrap;
     grid-column: 1/-1;
-    grid-row: 2
+    grid-row: 2;
   }
 
   .copyright {
-    grid-row: 3
+    grid-row: 3;
   }
 
   .hero-eyebrow {
