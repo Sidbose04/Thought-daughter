@@ -1,10 +1,11 @@
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <p className="eyebrow hero-eyebrow">A deck for unhurried conversation</p>
       <div className="hero-copy">
         <h1 id="hero-title">
-          Questions worth
+          Questions
+          <br />
+          worth
           <br />
           <em>lingering</em> with.
         </h1>
@@ -18,7 +19,7 @@ export default function Hero() {
       </div>
       <div className="hero-product" aria-label="Thought Daughter card deck">
         <img
-          src="/images/deck/hero-deck.jpg"
+          src="/images/deck/Hero.png"
           alt="Thought Daughter deck held in a hand beside flowers"
         />
       </div>
