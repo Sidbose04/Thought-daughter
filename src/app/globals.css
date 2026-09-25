@@ -623,7 +623,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px clamp(36px, 6vw, 90px);
+  padding: 38px 0 24px clamp(28px, 4.6vw, 68px);
   box-sizing: border-box;
 }
 
@@ -649,11 +649,13 @@ footer {
   letter-spacing: 0.15em;
   text-decoration: none;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
   opacity: 0.95;
   font-weight: 500;
+  width: clamp(140px, 15vw, 220px);
 }
 
 .hero {
@@ -661,9 +663,9 @@ footer {
   position: relative;
   background: #91a5ba;
   color: #ffffff;
-  padding: 120px clamp(36px, 6vw, 90px) 50px;
+  padding: 120px clamp(140px, 15vw, 220px) 50px clamp(55px, 10.5vw, 170px);
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
   align-items: center;
   gap: clamp(24px, 4vw, 60px);
   overflow: hidden;
@@ -679,7 +681,7 @@ footer {
 .hero-copy {
   position: relative;
   z-index: 2;
-  max-width: 560px;
+  max-width: 640px;
 }
 
 .hero h1,
@@ -688,7 +690,7 @@ footer {
   color: #ffffff;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 500;
-  font-size: clamp(52px, 6.6vw, 110px);
+  font-size: clamp(58px, 7.8vw, 130px);
   line-height: 0.88;
   letter-spacing: -0.045em;
   font-feature-settings: "calt" 0;
@@ -704,21 +706,21 @@ footer {
 
 .hero-copy>p {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 15px;
-  line-height: 1.5;
-  max-width: 340px;
-  margin: 24px 0 28px;
+  font-size: 17px;
+  line-height: 1.55;
+  max-width: 490px;
+  margin: 26px 0 32px;
   font-weight: 400;
 }
 
 .hero .text-link {
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -728,7 +730,7 @@ footer {
 .hero-product {
   position: relative;
   z-index: 1;
-  justify-self: center;
+  justify-self: end;
   width: 100%;
   max-width: 650px;
   display: flex;
@@ -751,9 +753,9 @@ footer {
 
 .hero .scroll-note {
   position: absolute;
-  left: clamp(36px, 6vw, 90px);
+  left: clamp(55px, 10.5vw, 170px);
   bottom: 28px;
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: rgba(255, 255, 255, 0.85);
@@ -768,25 +770,26 @@ footer {
   font-size: 15px;
 }
 
-/* Mobile only (<= 640px) */
-@media (max-width: 640px) {
+/* Responsive breakpoint for mobile & tablet (<= 960px) */
+@media (max-width: 960px) {
   .site-header {
-    padding: 18px 5vw;
+    padding: 28px 5vw 18px;
   }
 
   .header-logo {
-    height: clamp(48px, 12vw, 68px);
+    height: clamp(48px, 10vw, 68px);
     max-width: 65vw;
   }
 
   .site-header .header-link {
-    font-size: 9.5px;
+    width: auto;
+    font-size: 10px;
   }
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 100px 6vw 45px;
-    gap: 32px;
+    padding: 110px 7vw 55px;
+    gap: 40px;
     min-height: auto;
   }
 
@@ -796,23 +799,25 @@ footer {
 
   .hero h1,
   #hero-title {
-    font-size: clamp(40px, 11vw, 58px);
-    line-height: 0.92;
+    font-size: clamp(46px, 9vw, 76px);
+    line-height: 0.90;
   }
 
   .hero-copy>p {
-    margin: 18px 0 24px;
-    max-width: 100%;
+    margin: 20px 0 28px;
+    max-width: 480px;
+    font-size: 16px;
   }
 
   .hero-product {
-    max-width: min(88vw, 420px);
+    max-width: min(85vw, 500px);
     margin: 10px auto 0;
+    justify-self: center;
   }
 
   .hero-product img {
     width: 100%;
-    max-width: min(88vw, 420px);
+    max-width: min(85vw, 500px);
     height: auto;
     aspect-ratio: 1086 / 1170;
     object-fit: contain;
@@ -820,7 +825,7 @@ footer {
 
   .hero .scroll-note {
     position: static;
-    margin-top: 24px;
+    margin-top: 28px;
   }
 }
 
