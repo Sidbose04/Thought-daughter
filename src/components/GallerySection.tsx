@@ -1,44 +1,26 @@
-"use client";
-
-import Image from "next/image";
-import styles from "./GallerySection.module.css";
-
 export default function GallerySection() {
   return (
-    <section className={styles.gallery}>
-      <div className={styles.galleryTop}>
-        <p className={styles.eyebrow}>Atmosphere</p>
-        <h2 className={styles.heading}>
-          Stillness is not empty.
+    <section className="gallery section" aria-label="Thought Daughter in the wild">
+      <div className="gallery-top">
+        <p className="eyebrow">In the wild</p>
+        <h2>
+          The table is where
           <br />
-          It is <em>full</em> of answers.
+          it all <em>begins.</em>
         </h2>
       </div>
-
-      <figure className={styles.galleryLarge}>
-        <Image
+      <figure className="gallery-large reveal">
+        <img
           src="/images/deck/gallery-large.jpg"
-          alt="Thought Daughter card deck resting on natural wooden surface"
-          width={700}
-          height={840}
-          className={styles.galleryImg}
+          alt="Thought Daughter deck at a small street café table"
         />
-        <figcaption className={styles.caption}>
-          Curated objects for quiet rooms and deep reverie
-        </figcaption>
+        <figcaption>Take it somewhere the evening might surprise you.</figcaption>
       </figure>
-
-      <figure className={styles.gallerySmall}>
-        <Image
+      <figure className="gallery-small reveal">
+        <img
           src="/images/deck/gallery-small.jpg"
-          alt="Hands examining an inquiry card by window morning light"
-          width={500}
-          height={500}
-          className={styles.galleryImg}
+          alt="Cards scattered across a café table"
         />
-        <figcaption className={styles.caption}>
-          A companion for memory, solitude, and sincere encounter
-        </figcaption>
       </figure>
     </section>
   );

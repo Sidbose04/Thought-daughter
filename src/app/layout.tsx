@@ -1,41 +1,16 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Instrument_Serif, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thoughtdaughter.com"),
-  title: "Thought Daughter — An Intimate Inquiry Deck",
+  title: "Thought Daughter — Questions worth lingering with",
   description:
-    "A contemplative card deck crafted in deep stillness. 64 questions for unhurried evenings, quiet rooms, and sincere hearts.",
-  keywords: ["Thought Daughter", "card deck", "prompts", "contemplation", "editorial", "luxury journal"],
-  openGraph: {
-    title: "Thought Daughter — An Intimate Inquiry Deck",
-    description: "64 inquiries designed to peel away defenses gently.",
-    images: ["/images/cards/Card.png"],
-  },
+    "A deck designed for slow evenings, deeper conversations, and unexpected stories.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#c7d2e3",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -44,11 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${instrumentSerif.variable} ${inter.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <div className="grain" />
+        {children}
+      </body>
     </html>
   );
 }
