@@ -29,18 +29,25 @@ export default function Home() {
       .forEach((item) => observer.observe(item));
 
     const handleScroll = () => {
+      const isMobile = window.innerWidth <= 960;
       const viewport = window.scrollY;
       document.querySelectorAll("[data-parallax]").forEach((item) => {
         const el = item as HTMLElement;
-        el.style.transform = `translateY(${viewport * Number(el.dataset.parallax)}px)`;
+        if (isMobile) {
+          el.style.transform = "";
+        } else {
+          el.style.transform = `translateY(${viewport * Number(el.dataset.parallax)}px)`;
+        }
       });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
