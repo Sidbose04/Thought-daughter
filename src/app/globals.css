@@ -356,17 +356,22 @@ h2 em {
 
 /* --- Ritual & Envelope Section --- */
 .ritual-section {
-  background: #ffffff;
-  color: var(--ink);
-  padding: 120px clamp(55px, 10.5vw, 170px) 130px;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  background: #91a5ba;
+  color: #ffffff;
+  padding: clamp(90px, 11vh, 130px) clamp(55px, 10.5vw, 170px) clamp(60px, 8vh, 100px);
   position: relative;
   overflow: visible;
 }
 
 .ritual-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: clamp(40px, 6vw, 90px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(44px, 5.5vw, 96px);
   align-items: flex-start;
   width: 100%;
   margin: 0;
@@ -375,14 +380,15 @@ h2 em {
 .ritual-left {
   position: relative;
   z-index: 2;
+  align-self: flex-start;
 }
 
 .ritual-left .eyebrow {
-  margin: 0 0 28px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  margin: 0 0 32px;
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 600;
 }
 
@@ -390,10 +396,10 @@ h2 em {
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 500;
-  font-size: clamp(48px, 6vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.045em;
-  color: var(--ink);
+  font-size: clamp(54px, 6.4vw, 102px);
+  line-height: 0.90;
+  letter-spacing: -0.04em;
+  color: #ffffff;
 }
 
 .ritual-title em {
@@ -404,49 +410,49 @@ h2 em {
 .ritual-options {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 56px;
+  gap: 18px;
+  margin-top: clamp(48px, 6vh, 72px);
 }
 
 .ritual-tab-btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px 0;
+  padding: 10px 0;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   font-family: Inter, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8fa4b9;
+  color: rgba(255, 255, 255, 0.75);
   transition: color 0.3s ease, transform 0.3s ease;
   text-align: left;
 }
 
 .ritual-tab-btn:hover {
-  color: #252b35;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
 .ritual-tab-btn.active {
-  color: #252b35;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .ritual-tab-btn .tab-indicator {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #8fa4b9;
+  background: rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease, background-color 0.3s ease;
   flex-shrink: 0;
 }
 
 .ritual-tab-btn.active .tab-indicator {
-  background: #252b35;
+  background: #ffffff;
   transform: scale(1.4);
 }
 
@@ -454,13 +460,18 @@ h2 em {
 .ritual-right {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .reveal-meta {
   margin-bottom: 24px;
+}
+
+.reveal-meta:has(.reveal-tag:empty) {
+  display: none;
 }
 
 .reveal-tag {
@@ -470,7 +481,7 @@ h2 em {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8fa4b9;
+  color: rgba(255, 255, 255, 0.82);
   margin-bottom: 6px;
 }
 
@@ -478,7 +489,7 @@ h2 em {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-size: 17px;
-  color: #7c8594;
+  color: rgba(255, 255, 255, 0.88);
   margin: 0;
   letter-spacing: -0.01em;
 }
@@ -486,7 +497,7 @@ h2 em {
 .envelope-stage {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: min(46vw, 550px);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -496,7 +507,7 @@ h2 em {
 .envelope-wrapper {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: min(44vw, 530px);
 }
 
 .envelope-img {
@@ -517,12 +528,13 @@ h2 em {
 }
 
 /* Floating Revealed Card */
+/* Floating Revealed Card */
 .revealed-card {
   position: absolute;
-  top: 10%;
-  left: 5%;
-  right: 5%;
-  width: 90%;
+  top: 5%;
+  left: 6%;
+  right: 6%;
+  width: 88%;
   opacity: 0;
   pointer-events: none;
   transform: translateY(60px) scale(0.96);
@@ -533,49 +545,67 @@ h2 em {
 .revealed-card.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(-28%) scale(1.04);
+  transform: translateY(-24%) scale(1.02);
   filter: drop-shadow(0 28px 60px rgba(20, 30, 42, 0.28));
 }
 
 .revealed-inner {
-  background: #faf7f2;
-  border: 1px solid rgba(40, 48, 58, 0.12);
-  border-radius: 8px;
-  padding: 34px 30px;
+  aspect-ratio: 1125 / 1398;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #eee8de;
+  background-image: 
+    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.45) 0%, rgba(238, 232, 222, 0.2) 65%, rgba(215, 205, 190, 0.35) 100%),
+    url('/images/card-paper-seamless.jpg');
+  background-size: cover, 300px 300px;
+  background-repeat: no-repeat, repeat;
+  border: 1px solid rgba(190, 175, 150, 0.35);
+  border-radius: 4px;
+  padding: clamp(24px, 3.4vw, 42px) clamp(22px, 3vw, 36px);
   box-sizing: border-box;
-  color: #28303a;
+  color: #1a1714;
   position: relative;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 24px 60px rgba(18, 28, 40, 0.28);
 }
 
-.revealed-inner::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(40, 48, 58, 0.07);
-  border-radius: 4px;
-  pointer-events: none;
+/* Card 1: A Little Ritual */
+.ritual-card {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .card-top-tag {
   display: block;
-  text-align: center;
+  text-align: left;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-  color: #252b35;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  margin: 0 0 clamp(18px, 2.4vw, 30px);
+  color: #1a1714;
+}
+
+.ritual-text-body {
+  margin: 0;
 }
 
 .ritual-text-body p {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 13.5px;
-  line-height: 1.45;
+  font-size: clamp(12.5px, 1.35vw, 15.5px);
+  line-height: 1.55;
   letter-spacing: 0.035em;
-  text-transform: uppercase;
-  margin: 0 0 15px;
-  color: #2c343e;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  text-transform: none;
+  margin: 0 0 clamp(12px, 1.5vw, 18px);
+  color: #1c1917;
 }
 
 .ritual-text-body p:last-child {
@@ -583,94 +613,119 @@ h2 em {
 }
 
 .ritual-closer {
-  font-weight: 600;
-  color: #1a2028 !important;
+  font-weight: 400;
+  color: #1c1917 !important;
+  margin: 0;
 }
 
-/* Code Card */
+/* Card 2: The Thought Daughter Code */
 .code-card {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 .pegasus-logo {
-  height: 48px;
+  height: clamp(48px, 5.8vw, 68px);
   width: auto;
-  margin: 0 auto 14px;
+  margin: 0 auto clamp(8px, 1.2vw, 14px);
   display: block;
   object-fit: contain;
 }
 
 .code-heading {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin: 0 0 20px;
-  color: #252b35;
+  font-size: clamp(16px, 1.9vw, 23px);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  margin: 0 0 clamp(16px, 2.2vw, 26px);
+  color: #1a1714;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.2vw, 14px);
 }
 
-.code-heading em {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  text-transform: none;
-  font-size: 20px;
+.code-title-logo {
+  height: clamp(24px, 3.2vw, 36px);
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .code-rules-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(6px, 0.85vw, 10px);
+  margin: 0 0 clamp(16px, 2.2vw, 28px);
+  width: 100%;
 }
 
-.code-rules-list li {
-  font-family: Inter, sans-serif;
-  font-size: 10px;
-  line-height: 1.5;
+.code-rules-list p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(11.5px, 1.2vw, 14.5px);
+  line-height: 1.45;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #3b4450;
-  margin-bottom: 10px;
-  padding-left: 12px;
-  position: relative;
-}
-
-.code-rules-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #8fa4b9;
-}
-
-.code-rules-list li strong {
-  color: #1a2028;
-  font-weight: 600;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  color: #1c1917;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .code-closing-tag {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-  margin: 18px 0 14px;
-  color: #252b35;
+  font-style: normal;
+  font-size: clamp(12.5px, 1.35vw, 16px);
+  letter-spacing: 0.045em;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  margin: 0 0 clamp(16px, 2.2vw, 28px);
+  color: #1c1917;
 }
 
 .code-social {
-  font-family: Inter, sans-serif;
-  font-size: 9.5px;
-  line-height: 1.4;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #7c8594;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
   margin: 0;
 }
 
-.code-social span {
-  color: #252b35;
-  font-weight: 600;
+.code-social-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(11.5px, 1.2vw, 14.5px);
+  line-height: 1.4;
+  letter-spacing: 0.045em;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  color: #1c1917;
+  margin: 0;
+}
+
+.code-social-link {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(12px, 1.25vw, 15px);
+  letter-spacing: 0.05em;
+  font-variant: small-caps;
+  font-feature-settings: "smcp" 1;
+  color: #1a1714;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.code-social-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .envelope-action-hint {
@@ -681,12 +736,12 @@ h2 em {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8fa4b9;
+  color: rgba(255, 255, 255, 0.82);
   transition: color 0.3s ease;
 }
 
 .envelope-stage:hover .envelope-action-hint {
-  color: #252b35;
+  color: #ffffff;
 }
 
 .feature h2,
@@ -1261,6 +1316,8 @@ footer {
   }
 
   .ritual-section {
+    min-height: auto;
+    display: block;
     padding: 70px 6vw 80px;
   }
 
@@ -1302,17 +1359,58 @@ footer {
   }
 
   .revealed-inner {
-    padding: 24px 20px;
+    aspect-ratio: 1125 / 1398;
+    padding: 20px 16px;
+  }
+
+  .card-top-tag {
+    font-size: 15px;
+    margin-bottom: 14px;
   }
 
   .ritual-text-body p {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .pegasus-logo {
+    height: 38px;
+    margin-bottom: 6px;
+  }
+
+  .code-heading {
+    font-size: 14px;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+
+  .code-title-logo {
+    height: 20px;
+  }
+
+  .code-rules-list {
+    gap: 5px;
     margin-bottom: 12px;
   }
 
-  .code-rules-list li {
+  .code-rules-list p {
     font-size: 9px;
-    margin-bottom: 8px;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .code-closing-tag {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .code-social-text {
+    font-size: 9px;
+  }
+
+  .code-social-link {
+    font-size: 9.5px;
   }
 }
 

@@ -11,11 +11,14 @@ export default function RitualSection() {
       <div className="ritual-grid">
         {/* Left Column: Heading and Guide Selectors */}
         <div className="ritual-left">
-          <p className="eyebrow">A little ritual</p>
+          <p className="eyebrow">You've got mail</p>
           <h2 className="ritual-title">
-            Make room for
+            {/* Make room for
             <br />
-            <em>the answer.</em>
+            <em>the answer.</em> */}
+            <em>Inside</em>: A little guide
+            <br />
+            to the <em>ritual</em>
           </h2>
 
           <div className="ritual-options" role="tablist" aria-label="Ritual guides">
@@ -53,13 +56,13 @@ export default function RitualSection() {
         <div className="ritual-right">
           <div className="reveal-meta">
             <span className="reveal-tag">
-              {isRevealed ? "TAP TO CLOSE" : "TAP TO REVEAL"}
+              {/* {isRevealed ? "TAP TO CLOSE" : "TAP TO REVEAL"} */}
             </span>
-            <p className="reveal-caption">
+            {/* <p className="reveal-caption">
               {activeTab === "ritual"
                 ? "Inside: a little guide to the ritual"
                 : "Inside: the Thought Daughter code"}
-            </p>
+            </p> */}
           </div>
 
           <div
@@ -96,37 +99,41 @@ export default function RitualSection() {
               <div className={`revealed-card ${isRevealed ? "open" : ""}`}>
                 {activeTab === "ritual" ? (
                   <div className="revealed-inner ritual-card">
-                    <span className="card-top-tag">A LITTLE RITUAL</span>
+                    <h3 className="card-top-tag">A Little Ritual</h3>
                     <div className="ritual-text-body">
                       <p>
-                        Let the evening slow down.
+                        Let the evening slow down
                         <br />
-                        Pour yourself a glass of love, light a candle.
+                        Pour yourself a glass of love, light a
                         <br />
-                        Call someone you trust, or sit with yourself.
+                        Candle
+                        <br />
+                        Call someone you trust, or sit with yourself
                       </p>
                       <p>
-                        Shuffle. Pull a card.
+                        Shuffle. pull a card
                         <br />
-                        Read it slowly. Let it linger.
+                        Read it slowly. Let it linger
                       </p>
                       <p>
-                        Answer honestly, dramatically, with a story.
+                        Answer honestly, dramatically, with a story
                         <br />
-                        Or not at all.
+                        or not at all
                       </p>
                       <p>
-                        Ask someone else. Ask yourself.
+                        Ask someone else. Ask yourself
                         <br />
-                        Go deeper, or let it go.
+                        Go deeper, or let it go
                       </p>
                       <p>
-                        Some questions are meant to be answered.
+                        Some questions are meant to be answered
                         <br />
-                        Some are meant to wonder.
+                        Some are meant to wonder
                       </p>
                       <p className="ritual-closer">
-                        Keep what finds a place in you. Let the rest drift away.
+                        Keep what finds a place in you. Let the rest
+                        <br />
+                        drift away.
                       </p>
                     </div>
                   </div>
@@ -138,36 +145,38 @@ export default function RitualSection() {
                       className="pegasus-logo"
                     />
                     <h3 className="code-heading">
-                      THE <em>Thought Daughter</em> CODE
+                      <span>The</span>
+                      <img
+                        src="/images/thought-daughter-wordmark.png"
+                        alt="Thought Daughter"
+                        className="code-title-logo"
+                      />
+                      <span>Code</span>
                     </h3>
-                    <ul className="code-rules-list">
-                      <li>
-                        <strong>Think outside the box.</strong> There are no right answers here
-                      </li>
-                      <li>
-                        <strong>Dig deeper.</strong> Your first answer isn&apos;t always your real one
-                      </li>
-                      <li>
-                        <strong>Don&apos;t overthink it.</strong> Or do. That&apos;s kind of the point
-                      </li>
-                      <li>
-                        <strong>No judging.</strong> Honest answers are welcome
-                      </li>
-                      <li>
-                        <strong>Put your phone down.</strong> The conversation is happening here
-                      </li>
-                      <li>
-                        <strong>Let silence happen.</strong> You don&apos;t have to fill every second
-                      </li>
-                    </ul>
+                    <div className="code-rules-list">
+                      <p>Think outside the box – There are no right answers here</p>
+                      <p>Dig deeper – Your first answer isn&apos;t always your real one</p>
+                      <p>Don&apos;t overthink it – Or do. That&apos;s kind of the point</p>
+                      <p>No judging – honest answers are welcome</p>
+                      <p>Put your phone down – The conversation is happening here</p>
+                      <p>Let silence happen – You don&apos;t have to fill every second</p>
+                    </div>
                     <p className="code-closing-tag">
                       Take what resonates, leave what doesn&apos;t
                     </p>
-                    <p className="code-social">
-                      If you&apos;d like to share, we&apos;d love to listen
-                      <br />
-                      <span>@thethoughtdaughterdeck</span>
-                    </p>
+                    <div className="code-social">
+                      <p className="code-social-text">
+                        If you&apos;d like to share, we&apos;d love to listen
+                      </p>
+                      <a
+                        href="https://instagram.com/thethoughtdaughterdeck"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="code-social-link"
+                      >
+                        @thethoughtdaughterdeck
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>
