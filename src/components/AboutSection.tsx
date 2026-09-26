@@ -3,10 +3,10 @@ export default function AboutSection() {
     <section className="about section">
       <p className="eyebrow">The story</p>
       <p className="about-statement">
-        It started with notes scribbled on napkins and receipts. Questions that refused to leave after dinner ended.
+        Thought Daughter began as a collection of questions that lingered longer than small talk.
       </p>
       <p className="about-detail">
-        We made Thought Daughter because we missed conversations that ran late into the night. Pull a card across a kitchen island, over a glass of wine, or on a long drive when nobody wants to look at a screen.
+        A small deck for opening a window in the middle of an ordinary evening - with someone you know well, someone you are getting to know, or the person you are becoming.
       </p>
     </section>
   );

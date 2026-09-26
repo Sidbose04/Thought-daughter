@@ -26,19 +26,19 @@ export default function FeatureSections() {
 
       <section className="feature feature-second section">
         <div className="feature-copy">
-          <p className="eyebrow">No trivia, no scores</p>
+          <p className="eyebrow">Not another icebreaker</p>
           <h2>
-            Skip the small talk.
+            Less performance.
             <br />
-            <em>Start in the middle.</em>
+            <em>More presence.</em>
           </h2>
           <p className="intro">
-            Nobody needs another round of surface questions. Pick a card, read it out loud, and let the room go quiet for a second while everyone actually thinks.
+            The best stories arrive sideways. Thought Daughter makes room for curiosity, the kind that lets a conversation become its own place to stay.
           </p>
           <div className="keywords">
-            <span>80 Linen Cards</span>
-            <span>No Timer</span>
-            <span>No Right Answers</span>
+            <span>Depth</span>
+            <span>Story telling</span>
+            <span>Curiosity</span>
           </div>
         </div>
         <div className="feature-media reveal">
