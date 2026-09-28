@@ -825,15 +825,14 @@ h2 em {
 
 .prompt-card {
   position: relative;
-  /* aspect ratio 1:1.55 via padding trick */
-  padding-bottom: 155%;
+  width: 100%;
+  aspect-ratio: 1 / 1.55;
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: 0;
   perspective: 900px;
-  /* override padding-bottom on the element itself */
-  aspect-ratio: 1 / 1.55;
+  transform-style: preserve-3d;
 }
 
 .prompt-card>span {
@@ -866,37 +865,6 @@ h2 em {
   transform: rotateY(0deg);
 }
 
-background-size: cover;
-background-position: center;
-border: 1px solid rgba(255, 255, 255, .55)
-}
-
-.card-back {
-  font: 400 20px/1.05 'Instrument Serif', Georgia, serif;
-  color: #fff;
-  background-color: rgba(163, 178, 201, .55);
-  background-blend-mode: multiply;
-  text-shadow: 0 1px 10px rgba(30, 38, 50, .55)
-}
-
-.card-front {
-  font: 400 23px/1.05 'Cormorant Garamond', Georgia, serif;
-  color: #fff;
-  background-color: rgba(18, 22, 28, .62);
-  background-blend-mode: multiply;
-  transform: rotateY(180deg);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, .4)
-}
-
-.prompt-card:hover .card-back,
-.prompt-card.is-flipped .card-back {
-  transform: rotateY(180deg)
-}
-
-.prompt-card:hover .card-front,
-.prompt-card.is-flipped .card-front {
-  transform: rotateY(360deg)
-}
 
 .hint {
   text-align: right;
