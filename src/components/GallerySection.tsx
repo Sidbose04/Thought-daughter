@@ -230,26 +230,6 @@ export default function GallerySection() {
             come to <em>life.</em>
           </h2>
         </div>
-
-        {/* Desktop & Mobile Navigation Controls */}
-        <div className="gallery-controls" aria-label="Carousel navigation">
-          <button
-            type="button"
-            className="gallery-nav-btn prev"
-            onClick={() => scrollByAmount(-380)}
-            aria-label="Scroll left"
-          >
-            <span aria-hidden="true">←</span>
-          </button>
-          <button
-            type="button"
-            className="gallery-nav-btn next"
-            onClick={() => scrollByAmount(380)}
-            aria-label="Scroll right"
-          >
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
       </div>
 
       {/* Infinite Seamless Scrolling Track (Edge-to-Edge) */}
