@@ -913,30 +913,37 @@ h2 em {
 }
 
 .questions {
-  background: #dce5ef
+  background: #dce5ef;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: clamp(60px, 8vh, 90px) clamp(55px, 10.5vw, 170px);
 }
 
 .questions-heading {
   max-width: 590px;
-  margin-bottom: 70px
+  margin-bottom: clamp(24px, 4vh, 44px);
 }
 
 .questions-heading>p:last-child {
-  max-width: 310px;
-  margin: 28px 0 0;
-  color: #555d68
+  max-width: 360px;
+  margin: clamp(14px, 2vh, 22px) 0 0;
+  color: #555d68;
 }
 
 .prompt-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px
+  gap: clamp(14px, 1.8vw, 24px);
 }
 
 .prompt-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1.55;
+  aspect-ratio: 1.6 / 1;
   border: 0;
   background: transparent;
   cursor: pointer;
@@ -981,8 +988,8 @@ h2 em {
   text-transform: uppercase;
   letter-spacing: .13em;
   font-size: 10px;
-  margin: 22px 0 0;
-  color: var(--muted)
+  margin: clamp(12px, 2vh, 20px) 0 0;
+  color: var(--muted);
 }
 
 .gallery {
@@ -1645,11 +1652,11 @@ footer {
 
   .prompt-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px
+    gap: 12px;
   }
 
   .prompt-card {
-    aspect-ratio: 1 / 1.55;
+    aspect-ratio: 1.6 / 1;
   }
 
   .prompt-card>span {

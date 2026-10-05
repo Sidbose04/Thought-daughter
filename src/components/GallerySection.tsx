@@ -131,12 +131,27 @@ export default function GallerySection() {
     };
   }, [isPaused, isDragging, normalizeScrollPos]);
 
-  // Pointer & Touch handlers
+  // Velocity tracking & momentum physics for phone users (flick acceleration)
+  const lastClientXRef = useRef(0);
+  const lastTimeRef = useRef(0);
+  const velocityRef = useRef(0);
+  const momentumAnimIdRef = useRef<number | null>(null);
+
+  // Pointer & Touch handlers with velocity tracking
   const handlePointerDown = (clientX: number) => {
+    // Stop any ongoing momentum animation immediately
+    if (momentumAnimIdRef.current) {
+      cancelAnimationFrame(momentumAnimIdRef.current);
+      momentumAnimIdRef.current = null;
+    }
+
     updateCycleWidth();
     isPointerDownRef.current = true;
     dragStartXRef.current = clientX;
     dragStartScrollRef.current = scrollPosRef.current;
+    lastClientXRef.current = clientX;
+    lastTimeRef.current = performance.now();
+    velocityRef.current = 0;
 
     // Long press on phone/touch: pause slow scrolling
     longPressTimerRef.current = setTimeout(() => {
@@ -146,6 +161,19 @@ export default function GallerySection() {
 
   const handlePointerMove = (clientX: number) => {
     if (!isPointerDownRef.current) return;
+    const now = performance.now();
+    const dt = now - lastTimeRef.current;
+    const dx = clientX - lastClientXRef.current;
+
+    // Calculate instantaneous touch velocity (pixels / ms)
+    if (dt > 8) {
+      const instantVelocity = -dx / dt;
+      // Exponential moving average for silky smooth momentum
+      velocityRef.current = 0.7 * instantVelocity + 0.3 * velocityRef.current;
+      lastClientXRef.current = clientX;
+      lastTimeRef.current = now;
+    }
+
     const deltaX = clientX - dragStartXRef.current;
 
     if (Math.abs(deltaX) > 6) {
@@ -168,12 +196,63 @@ export default function GallerySection() {
 
     isPointerDownRef.current = false;
     setIsDragging(false);
-    normalizeScrollPos();
 
-    // Resume smooth scroll after release
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 900);
+    // If phone user flicked or dragged with speed, apply inertia/acceleration
+    const initialVelocity = velocityRef.current;
+    if (Math.abs(initialVelocity) > 0.15) {
+      setIsPaused(true);
+      let currentVelocity = initialVelocity * 16.67; // convert to px / frame (at 60fps)
+      // Cap maximum initial fling speed for control
+      const maxSpeed = 38;
+      if (Math.abs(currentVelocity) > maxSpeed) {
+        currentVelocity = Math.sign(currentVelocity) * maxSpeed;
+      }
+
+      let lastTimestamp: number | null = null;
+      const friction = 0.945; // Smooth exponential deceleration
+
+      const glide = (timestamp: number) => {
+        if (lastTimestamp === null) lastTimestamp = timestamp;
+        const delta = timestamp - lastTimestamp;
+        lastTimestamp = timestamp;
+
+        // Apply time-normalized velocity step
+        const frameMultiplier = delta / 16.67;
+        scrollPosRef.current += currentVelocity * frameMultiplier;
+        normalizeScrollPos();
+
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(-${scrollPosRef.current}px, 0, 0)`;
+        }
+
+        // Apply friction
+        currentVelocity *= Math.pow(friction, frameMultiplier);
+
+        // Keep gliding until momentum drops close to the idle drift speed
+        if (Math.abs(currentVelocity) > 0.6) {
+          momentumAnimIdRef.current = requestAnimationFrame(glide);
+        } else {
+          momentumAnimIdRef.current = null;
+          normalizeScrollPos();
+          // Resume idle smooth drift smoothly
+          setTimeout(() => {
+            if (!isPointerDownRef.current) {
+              setIsPaused(false);
+            }
+          }, 300);
+        }
+      };
+
+      momentumAnimIdRef.current = requestAnimationFrame(glide);
+    } else {
+      normalizeScrollPos();
+      // Resume smooth scroll after release
+      setTimeout(() => {
+        if (!isPointerDownRef.current) {
+          setIsPaused(false);
+        }
+      }, 700);
+    }
   };
 
   // Step button navigation for desktop/mobile
