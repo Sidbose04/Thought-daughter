@@ -14,17 +14,35 @@ export default function FeatureSections() {
           <div className="feature-card-part">
             <div className="feature-part-image">
               <img
-                src="/images/WhatsApp Image 2026-09-22 at 18.01.55.jpeg"
-                alt="Solo play with Thought Daughter cards"
+                src="/images/deck/feature-1.jpg"
+                alt="Gathering with friends and Thought Daughter cards"
               />
+            </div>
+            <div className="feature-part-content">
+              <h3 className="feature-part-heading">With your people</h3>
+              <div className="keywords feature-tags">
+                <span>Dinner with friends</span>
+                <span>Date nights</span>
+                <span>Weekend getaways</span>
+                <span>Wine &amp; conversations</span>
+              </div>
             </div>
           </div>
           <div className="feature-card-part">
             <div className="feature-part-image">
               <img
-                src="/images/deck/feature-1.jpg"
-                alt="Group play with Thought Daughter cards at a café table"
+                src="/images/WhatsApp Image 2026-09-22 at 18.01.55.jpeg"
+                alt="Solo reflections with Thought Daughter cards"
               />
+            </div>
+            <div className="feature-part-content">
+              <h3 className="feature-part-heading">With yourself</h3>
+              <div className="keywords feature-tags">
+                <span>Solo reflections</span>
+                <span>Journaling sessions</span>
+                <span>Slow mornings</span>
+                <span>Quiet nights in</span>
+              </div>
             </div>
           </div>
         </div>
