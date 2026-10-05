@@ -2,25 +2,31 @@ export default function FeatureSections() {
   return (
     <>
       <section className="feature feature-first section">
-        <div className="feature-media reveal">
-          <img
-            src="/images/deck/feature-1.jpg"
-            alt="Thought Daughter cards and orange drinks on a café table"
-          />
-        </div>
-        <div className="feature-copy">
-          <p className="eyebrow">Table companion</p>
+        <div className="feature-top">
+          <p className="eyebrow">Designed for company</p>
           <h2>
-            For tables where
+            For all the ways
             <br />
-            people <em>stay.</em>
+            we <em>gather.</em>
           </h2>
-          <ul className="situations">
-            <li>Late dinners</li>
-            <li>Third drinks</li>
-            <li>Quiet mornings</li>
-            <li>Old friends</li>
-          </ul>
+        </div>
+        <div className="feature-dual-media reveal">
+          <div className="feature-card-part">
+            <div className="feature-part-image">
+              <img
+                src="/images/WhatsApp Image 2026-09-22 at 18.01.55.jpeg"
+                alt="Solo play with Thought Daughter cards"
+              />
+            </div>
+          </div>
+          <div className="feature-card-part">
+            <div className="feature-part-image">
+              <img
+                src="/images/deck/feature-1.jpg"
+                alt="Group play with Thought Daughter cards at a café table"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
