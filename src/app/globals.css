@@ -527,27 +527,71 @@ h2 em {
   filter: brightness(0.94) drop-shadow(0 24px 48px rgba(35, 48, 64, 0.16));
 }
 
-/* Floating Revealed Card */
+/* Transparent overlay to catch clicks anywhere without darkening or blurring the screen */
+.ritual-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: transparent;
+  cursor: default;
+}
+
 /* Floating Revealed Card */
 .revealed-card {
   position: absolute;
-  top: 5%;
-  left: 6%;
-  right: 6%;
-  width: 88%;
+  top: 12%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(60px) scale(0.96);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease;
-  z-index: 10;
+  transform: translateY(40px) scale(0.96);
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, filter 0.5s ease;
+  z-index: 100;
+  perspective: 1000px;
 }
 
 .revealed-card.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(-24%) scale(1.02);
-  filter: drop-shadow(0 28px 60px rgba(20, 30, 42, 0.28));
+  /* Lowered popped up position as requested: tucks comfortably near envelope center/lowered */
+  transform: translateY(-8%) scale(1.02);
+  filter: drop-shadow(0 26px 50px rgba(12, 19, 29, 0.38));
 }
+
+.envelope-stage.is-revealed {
+  z-index: 90;
+}
+
+.revealed-letter-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg));
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.revealed-letter-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 16px 40px rgba(14, 22, 32, 0.32);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.revealed-card.open:hover .revealed-letter-img {
+  filter: brightness(1.02);
+}
+
+
 
 .revealed-inner {
   aspect-ratio: 1125 / 1398;
@@ -860,9 +904,11 @@ h2 em {
 }
 
 .feature-tags {
-  margin-top: 0;
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  max-width: 520px;
+  width: 100%;
 }
 
 .feature-tags span {
@@ -873,8 +919,13 @@ h2 em {
   font-size: 14.5px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 10px 20px;
+  padding: 11px 16px;
   border-radius: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -1528,7 +1579,7 @@ footer {
   }
 
   .revealed-card.open {
-    transform: translateY(-20%) scale(1.02);
+    transform: translateY(-6%) scale(1.02);
   }
 
   .revealed-inner {

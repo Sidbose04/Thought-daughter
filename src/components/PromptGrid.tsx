@@ -24,7 +24,8 @@ export default function PromptGrid() {
           <br />
           <em>See what unfolds.</em>
         </h2>
-        <p>Each question opens a door. Some lead outward; some, quietly, in.</p>
+        <p>Each question opens a door. <br />
+          Some lead outward; some, quietly, in.</p>
       </div>
       <div className="prompt-grid" aria-label="Sample questions">
         {CARD_FRONTS.map((src, idx) => (

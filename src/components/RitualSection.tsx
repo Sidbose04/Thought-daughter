@@ -1,21 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RitualSection() {
   const [activeTab, setActiveTab] = useState<"ritual" | "code">("ritual");
   const [isRevealed, setIsRevealed] = useState(false);
 
+  // Dismiss when Escape is pressed
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isRevealed) {
+        setIsRevealed(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isRevealed]);
+
+  // Subtle interactive 3D tilt tracking for the revealed card
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+    card.style.setProperty("--tilt-rx", `${rotateX.toFixed(2)}deg`);
+    card.style.setProperty("--tilt-ry", `${rotateY.toFixed(2)}deg`);
+  };
+
+  const handleCardMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty("--tilt-rx", "0deg");
+    e.currentTarget.style.setProperty("--tilt-ry", "0deg");
+  };
+
   return (
     <section className="ritual-section" id="ritual" aria-label="A little ritual">
+      {/* Full-screen click-anywhere backdrop overlay when popped */}
+      {isRevealed && (
+        <div
+          className="ritual-backdrop"
+          onClick={() => setIsRevealed(false)}
+          aria-hidden="true"
+        />
+      )}
+
       <div className="ritual-grid">
         {/* Left Column: Heading and Guide Selectors */}
         <div className="ritual-left">
           <p className="eyebrow">You've got mail</p>
           <h2 className="ritual-title">
-            {/* Make room for
-            <br />
-            <em>the answer.</em> */}
             <em>Inside</em>: A little guide
             <br />
             to the <em>ritual</em>
@@ -55,19 +91,15 @@ export default function RitualSection() {
         {/* Right Column: Interactive Envelope Reveal */}
         <div className="ritual-right">
           <div className="reveal-meta">
-            <span className="reveal-tag">
-              {/* {isRevealed ? "TAP TO CLOSE" : "TAP TO REVEAL"} */}
-            </span>
-            {/* <p className="reveal-caption">
-              {activeTab === "ritual"
-                ? "Inside: a little guide to the ritual"
-                : "Inside: the Thought Daughter code"}
-            </p> */}
+            <span className="reveal-tag" />
           </div>
 
           <div
             className={`envelope-stage ${isRevealed ? "is-revealed" : ""}`}
-            onClick={() => setIsRevealed(!isRevealed)}
+            onClick={(e) => {
+              // If already revealed and clicked, toggle off
+              setIsRevealed(!isRevealed);
+            }}
             role="button"
             tabIndex={0}
             aria-expanded={isRevealed}
@@ -96,94 +128,37 @@ export default function RitualSection() {
               />
 
               {/* Sliding Revealed Card (floats out on tap) */}
-              <div className={`revealed-card ${isRevealed ? "open" : ""}`}>
-                {activeTab === "ritual" ? (
-                  <div className="revealed-inner ritual-card">
-                    <h3 className="card-top-tag">A Little Ritual</h3>
-                    <div className="ritual-text-body">
-                      <p>
-                        Let the evening slow down
-                        <br />
-                        Pour yourself a glass of love, light a
-                        <br />
-                        Candle
-                        <br />
-                        Call someone you trust, or sit with yourself
-                      </p>
-                      <p>
-                        Shuffle. pull a card
-                        <br />
-                        Read it slowly. Let it linger
-                      </p>
-                      <p>
-                        Answer honestly, dramatically, with a story
-                        <br />
-                        or not at all
-                      </p>
-                      <p>
-                        Ask someone else. Ask yourself
-                        <br />
-                        Go deeper, or let it go
-                      </p>
-                      <p>
-                        Some questions are meant to be answered
-                        <br />
-                        Some are meant to wonder
-                      </p>
-                      <p className="ritual-closer">
-                        Keep what finds a place in you. Let the rest
-                        <br />
-                        drift away.
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="revealed-inner code-card">
-                    <img
-                      src="/images/pegasus-emblem.png"
-                      alt="Thought Daughter Pegasus"
-                      className="pegasus-logo"
-                    />
-                    <h3 className="code-heading">
-                      <span>The</span>
-                      <img
-                        src="/images/thought-daughter-wordmark.png"
-                        alt="Thought Daughter"
-                        className="code-title-logo"
-                      />
-                      <span>Code</span>
-                    </h3>
-                    <div className="code-rules-list">
-                      <p>Think outside the box – There are no right answers here</p>
-                      <p>Dig deeper – Your first answer isn&apos;t always your real one</p>
-                      <p>Don&apos;t overthink it – Or do. That&apos;s kind of the point</p>
-                      <p>No judging – honest answers are welcome</p>
-                      <p>Put your phone down – The conversation is happening here</p>
-                      <p>Let silence happen – You don&apos;t have to fill every second</p>
-                    </div>
-                    <p className="code-closing-tag">
-                      Take what resonates, leave what doesn&apos;t
-                    </p>
-                    <div className="code-social">
-                      <p className="code-social-text">
-                        If you&apos;d like to share, we&apos;d love to listen
-                      </p>
-                      <a
-                        href="https://instagram.com/thethoughtdaughterdeck"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="code-social-link"
-                      >
-                        @thethoughtdaughterdeck
-                      </a>
-                    </div>
-                  </div>
-                )}
+              <div
+                className={`revealed-card ${isRevealed ? "open" : ""}`}
+                onClick={(e) => {
+                  // Clicking the card itself lets you tuck it away or interact
+                  e.stopPropagation();
+                  setIsRevealed(false);
+                }}
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+              >
+                <div className="revealed-letter-wrapper">
+                  <div className="card-shine-effect" />
+                  <img
+                    src={
+                      activeTab === "ritual"
+                        ? "/images/letters/letter1.png"
+                        : "/images/letters/letter2.jpeg"
+                    }
+                    alt={
+                      activeTab === "ritual"
+                        ? "A Little Ritual Letter Guide"
+                        : "The Thought Daughter Code Letter Guide"
+                    }
+                    className="revealed-letter-img"
+                  />
+                </div>
               </div>
             </div>
 
             <span className="envelope-action-hint">
-              {isRevealed ? "Tap to tuck card away" : "Tap envelope to read"}
+              {isRevealed ? "Click anywhere to put away" : "Tap envelope to read"}
             </span>
           </div>
         </div>
