@@ -8,21 +8,21 @@ interface GallerySlide {
 }
 
 const GALLERY_IMAGES: GallerySlide[] = [
-  {
-    src: "/images/deck/gallery-large.jpg",
-    alt: "Thought Daughter deck at a small street café table",
-  },
+  // {
+  //   src: "/images/deck/gallery-large.jpg",
+  //   alt: "Thought Daughter deck at a small street café table",
+  // },
   {
     src: "/images/deck/gallery-small.jpg",
     alt: "Thought Daughter cards scattered across a café table",
   },
   {
-    src: "/images/deck/feature-1.jpg",
+    src: "/images/IMG_6698.JPG.jpeg",
     alt: "Thought Daughter cards and drinks on an outdoor café table",
   },
   {
-    src: "/images/deck/feature-2.jpg",
-    alt: "A person holding Thought Daughter cards with a drink",
+    src: "/images/IMG_6417.JPG.jpeg",
+    alt: "Something Unique",
   },
   {
     src: "/images/WhatsApp Image 2026-09-22 at 18.01.56.jpeg",

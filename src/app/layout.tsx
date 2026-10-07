@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Thought Daughter · Questions worth lingering with",
   description:
     "Eighty question cards for long dinners, quiet nights, and the conversations you never quite get around to having.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export const viewport: Viewport = {

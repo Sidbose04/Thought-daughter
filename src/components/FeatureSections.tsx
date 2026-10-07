@@ -14,7 +14,7 @@ export default function FeatureSections() {
           <div className="feature-card-part">
             <div className="feature-part-image">
               <img
-                src="/images/deck/feature-1.jpg"
+                src="/images/IMG_6414.JPG.jpeg"
                 alt="Gathering with friends and Thought Daughter cards"
               />
             </div>
@@ -31,7 +31,7 @@ export default function FeatureSections() {
           <div className="feature-card-part">
             <div className="feature-part-image">
               <img
-                src="/images/WhatsApp Image 2026-09-22 at 18.01.55.jpeg"
+                src="/images/IMG_6405.JPG.jpeg"
                 alt="Solo reflections with Thought Daughter cards"
               />
             </div>
@@ -67,7 +67,7 @@ export default function FeatureSections() {
         </div>
         <div className="feature-media reveal">
           <img
-            src="/images/deck/feature-2.jpg"
+            src="/images/IMG_6417.JPG.jpeg"
             alt="A person holding Thought Daughter cards and a drink"
           />
         </div>
